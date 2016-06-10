@@ -2,7 +2,9 @@
     <string name="app_name">Sibirski</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_text">Log in</string>
-    <string name="activity_login_name">Log in</string>
+    <string name="activity_login_title">Log in</string>
     <string name="hint_name">username</string>
     <string name="hint_pass">password</string>
+    <string name="default_login">281411</string>
+    <string name="default_pass">E281411e</string>
 </resources>

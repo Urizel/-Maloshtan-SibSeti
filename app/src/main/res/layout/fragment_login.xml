@@ -15,16 +15,18 @@
     <EditText
         android:id="@+id/edit_name"
         android:singleLine="true"
-        android:hint="@string/hint_name"
         android:inputType="text"
+        android:hint="@string/hint_name"
+        android:text="@string/default_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edit_pass"
         android:singleLine="true"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:hint="@string/hint_pass"
+        android:text="@string/default_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
