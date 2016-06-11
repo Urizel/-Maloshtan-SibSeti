@@ -1,10 +1,23 @@
 <resources>
-    <string name="app_name">Sibirski</string>
+    <string name="app_name">Sibirskie Seti</string>
     <string name="action_settings">Settings</string>
     <string name="button_login_text">Log in</string>
-    <string name="activity_login_title">Log in</string>
+    <string name="activity_login_title">Sibirskie Seti</string>
     <string name="hint_name">username</string>
     <string name="hint_pass">password</string>
+    <!--DELETE IT-->
     <string name="default_login">281411</string>
     <string name="default_pass">E281411e</string>
+    <!---->
+    <string name="title_activity_main">Personal Cabinet</string>
+    <string name="login_failed">Login failed</string>
+    <string name="current_balance">Current balance</string>
+    <string name="wallet_image">Wallet image</string>
+    <string name="current_plan">Your current plan</string>
+    <string name="next_charge">Next charge date</string>
+    <string name="show_last_charges">Show last charges</string>
+    <string name="take_loan">Take loan</string>
+    <string name="company_logo">Company logo</string>
+    <string name="phone">8-800-250-0211</string>
+    <string name="login_welcome">Welcome to the Sibirskie Seti personal cabinet. Please log in.</string>
 </resources>
