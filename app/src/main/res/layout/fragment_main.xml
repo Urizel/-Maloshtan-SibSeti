@@ -51,98 +51,78 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="@dimen/activity_margin"
         android:layout_below="@+id/main_header"
         android:layout_above="@+id/main_footer"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/scrollView" >
 
         <LinearLayout
-            android:gravity="center"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_margin" >
-
-            <TextView
-                android:textColor="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/current_plan" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/text_plan" />
-        </LinearLayout>
-
-        <LinearLayout
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_margin" >
+            android:padding="@dimen/activity_margin">
 
-            <TextView
-                android:textColor="@color/colorPrimary"
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/charge_rate" />
+                android:layout_margin="@dimen/activity_margin" >
 
-            <TextView
+                <TextView
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/current_plan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/text_plan" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/text_charge" />
+                android:layout_margin="@dimen/activity_margin" >
+
+                <TextView
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/charge_rate" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/text_charge" />
+            </LinearLayout>
+
+            <Button
+                style="@style/button"
+                android:text="@string/show_last_charges"
+                android:id="@+id/button_charges" />
+
+            <Button
+                style="@style/button"
+                android:text="@string/take_loan"
+                android:id="@+id/button_loan" />
+
         </LinearLayout>
+    </ScrollView>
 
-        <Button
-            style="@style/button"
-            android:text="@string/show_last_charges"
-            android:id="@+id/button_charges" />
-
-        <Button
-            style="@style/button"
-            android:text="@string/take_loan"
-            android:id="@+id/button_loan" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_margin="@dimen/activity_small_margin"
-        android:id="@+id/main_footer"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/company_logo"
-            android:adjustViewBounds="true"
-            android:maxWidth="@dimen/small_image"
-            android:maxHeight="@dimen/small_image"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/phone" />
-
-    </LinearLayout>
+    <include layout="@layout/footer"
+        android:id="@+id/main_footer" />
 
 </RelativeLayout>

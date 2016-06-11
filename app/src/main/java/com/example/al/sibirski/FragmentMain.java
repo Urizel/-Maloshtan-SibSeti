@@ -22,8 +22,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.io.UnsupportedEncodingException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 public class FragmentMain extends Fragment {
     private static final String LOG_TAG = FragmentMain.class.getSimpleName();
@@ -90,7 +93,15 @@ public class FragmentMain extends Fragment {
         queue.add(stringRequest);
     }
 
-    private void populateInterface(String response) {
+    private void populateInterface(String string) {
+        String response = null;
+        try {
+            response = URLDecoder.decode(URLEncoder.encode(string, "iso8859-1"),"UTF-8");
+        }
+        catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        }
+
         log(response);
         Document doc = Jsoup.parse(response);
 

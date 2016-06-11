@@ -150,6 +150,7 @@ public class FragmentLogin extends Fragment {
         editor.putString(REMEMBER_LOGIN, mEditName.getText().toString());
         editor.apply();
     }
+
     private void log(String text) {
         Log.i(LOG_TAG, text);
     }

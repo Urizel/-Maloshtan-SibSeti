@@ -60,33 +60,7 @@
             android:text="@string/button_login_text" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_margin="@dimen/activity_small_margin"
-        android:id="@+id/login_footer"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/company_logo"
-            android:adjustViewBounds="true"
-            android:maxWidth="@dimen/small_image"
-            android:maxHeight="@dimen/small_image"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/phone" />
-
-    </LinearLayout>
+    <include layout="@layout/footer"
+        android:id="@+id/login_footer" />
 
 </RelativeLayout>
