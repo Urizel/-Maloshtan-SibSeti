@@ -18,13 +18,20 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 import java.net.CookieHandler;
 import java.net.CookieManager;
 
 public class FragmentMain extends Fragment {
     private static final String LOG_TAG = FragmentMain.class.getSimpleName();
 
-    public static final String MAIN_URL = "http://header.211.ru/";
+    public static final String MAIN_URL = "http://passport.211.ru/profile";
+    public static final String BALANCE_CLASS = "header-balance-button";
+    public static final String OTHER_CLASS = "user-desk-plan-current";
+    public static final String PLAN_CLASS = "tariff-info";
 
     private TextView mTextBalance;
     private TextView mTextPlan;
@@ -84,7 +91,24 @@ public class FragmentMain extends Fragment {
     }
 
     private void populateInterface(String response) {
-//        mTextCharge.setText(response);
+        log(response);
+        Document doc = Jsoup.parse(response);
+
+        Elements balanceClass = doc.getElementsByClass(BALANCE_CLASS);
+        String balance =  balanceClass.get(0).ownText();
+        mTextBalance.setText(String.format(getContext().getString(R.string.balance),balance));
+
+        Elements planClass = doc.getElementsByClass(PLAN_CLASS);
+        Elements planTag = planClass.get(0).getElementsByTag("h2");
+        String plan = planTag.get(0).ownText();
+        plan = plan.substring(plan.indexOf("«")+1);
+        plan = plan.substring(0, plan.indexOf("»"));
+        mTextPlan.setText(plan);
+
+        Elements costClass = doc.getElementsByClass(PLAN_CLASS);
+        Elements costTag = costClass.get(0).getElementsByTag("strong");
+        String cost = costTag.get(1).ownText();
+        mTextCharge.setText(cost);
     }
 
 

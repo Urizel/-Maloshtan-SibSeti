@@ -1,4 +1,4 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -9,11 +9,14 @@
 
 
     <LinearLayout
+        android:id="@+id/main_header"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:layout_height="140dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
 
         <TextView
             style="@style/headerText"
@@ -25,14 +28,12 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center" >
 
             <TextView
                 style="@style/headerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="$50"
                 android:id="@+id/text_balance" />
 
             <ImageView
@@ -50,81 +51,98 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView" >
+        android:gravity="center"
+        android:padding="@dimen/activity_margin"
+        android:layout_below="@+id/main_header"
+        android:layout_above="@+id/main_footer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="@dimen/activity_margin" >
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_margin" >
 
             <TextView
+                android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/current_plan" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Generic"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/text_plan" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/next_charge" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="11.06.2016"
-                android:id="@+id/text_charge" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/show_last_charges"
-                android:id="@+id/button_charges" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/take_loan"
-                android:id="@+id/button_loan" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/company_logo"
-                    android:adjustViewBounds="true"
-                    android:maxWidth="@dimen/small_image"
-                    android:maxHeight="@dimen/small_image"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/logo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/phone" />
-
-            </LinearLayout>
-
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_margin" >
+
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/charge_rate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/text_charge" />
+        </LinearLayout>
+
+        <Button
+            style="@style/button"
+            android:text="@string/show_last_charges"
+            android:id="@+id/button_charges" />
+
+        <Button
+            style="@style/button"
+            android:text="@string/take_loan"
+            android:id="@+id/button_loan" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="@dimen/activity_small_margin"
+        android:id="@+id/main_footer"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/company_logo"
+            android:adjustViewBounds="true"
+            android:maxWidth="@dimen/small_image"
+            android:maxHeight="@dimen/small_image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/phone" />
+
+    </LinearLayout>
+
+</RelativeLayout>
