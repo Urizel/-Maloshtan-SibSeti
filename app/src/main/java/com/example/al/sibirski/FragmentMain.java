@@ -1,6 +1,8 @@
 package com.example.al.sibirski;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -31,15 +33,20 @@ import java.net.URLEncoder;
 public class FragmentMain extends Fragment {
     private static final String LOG_TAG = FragmentMain.class.getSimpleName();
 
-    public static final String MAIN_URL = "http://passport.211.ru/profile";
+    //    public static final String OTHER_CLASS = "user-desk-plan-current";
+    public static final String MAIN_URL = "http://passport.211.ru/profile/";
     public static final String BALANCE_CLASS = "header-balance-button";
-    public static final String OTHER_CLASS = "user-desk-plan-current";
     public static final String PLAN_CLASS = "tariff-info";
+    public static final String PLAN_TAG = "h2";
+    private static final String COST_TAG = "strong";
+    private static final char PLAN_LEFT_BRACE = '«';
+    private static final char PLAN_RIGHT_BRACE = '»';
 
     private TextView mTextBalance;
     private TextView mTextPlan;
     private TextView mTextCharge;
 
+    private ProgressDialog mProgressDialog;
     private CookieManager mCookieManager;
     private Context mAppContext;
 
@@ -52,9 +59,6 @@ public class FragmentMain extends Fragment {
 
         mAppContext = getActivity().getApplicationContext();
         mCookieManager = UtilCookies.loadCookies(mAppContext);
-        if (!UtilCookies.isLoggedIn(mCookieManager)) {
-            loginFailed();
-        }
     }
 
     @Override
@@ -69,7 +73,7 @@ public class FragmentMain extends Fragment {
 
         Button buttonCharges = (Button) rootView.findViewById(R.id.button_charges);
         buttonCharges.setOnClickListener(v -> openChargesActivity());
-        Button buttonLoan = (Button) rootView.findViewById(R.id.button_loan);
+        Button buttonLoan = (Button) rootView.findViewById(R.id.button_open_loan);
         buttonLoan.setOnClickListener(v -> openLoanActivity());
 
         return rootView;
@@ -79,58 +83,100 @@ public class FragmentMain extends Fragment {
     public void onResume() {
         super.onResume();
 
+        if (!UtilCookies.isLoggedIn(mCookieManager)) {
+            showToast(getString(R.string.login_failed));
+            goBack();
+        }
+
+        startProgressDialog();
+
         CookieHandler.setDefault(mCookieManager);
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
+        logCookies();
+
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET,
                 MAIN_URL,
-                (Response.Listener<String>) this::populateInterface,
-                (Response.ErrorListener) error -> log("Volley query in main returned error!")
+                this::loadingFinished,
+                this::loadingError
         );
 
         queue.add(stringRequest);
     }
 
-    private void populateInterface(String string) {
-        String response = null;
+    private void loadingFinished(String response) {
+        closeProgressDialog();
+
+        String responseEncoded = null;
         try {
-            response = URLDecoder.decode(URLEncoder.encode(string, "iso8859-1"),"UTF-8");
+            responseEncoded = URLDecoder.decode(URLEncoder.encode(response, "iso8859-1"),"UTF-8");
         }
         catch (UnsupportedEncodingException ex) {
             ex.printStackTrace();
         }
 
-        log(response);
-        Document doc = Jsoup.parse(response);
+        Document doc = Jsoup.parse(responseEncoded);
 
-        Elements balanceClass = doc.getElementsByClass(BALANCE_CLASS);
-        String balance =  balanceClass.get(0).ownText();
-        mTextBalance.setText(String.format(getContext().getString(R.string.balance),balance));
+        try {
+            Elements balanceClass = doc.getElementsByClass(BALANCE_CLASS);
+            String balance =  balanceClass.get(0).ownText();
+            mTextBalance.setText(String.format(getContext().getString(R.string.balance),balance));
 
-        Elements planClass = doc.getElementsByClass(PLAN_CLASS);
-        Elements planTag = planClass.get(0).getElementsByTag("h2");
-        String plan = planTag.get(0).ownText();
-        plan = plan.substring(plan.indexOf("«")+1);
-        plan = plan.substring(0, plan.indexOf("»"));
-        mTextPlan.setText(plan);
+            Elements planClass = doc.getElementsByClass(PLAN_CLASS);
+            Elements planTag = planClass.get(0).getElementsByTag(PLAN_TAG);
+            String plan = planTag.get(0).ownText();
+            plan = plan.substring(plan.indexOf(PLAN_LEFT_BRACE)+1);
+            plan = plan.substring(0, plan.indexOf(PLAN_RIGHT_BRACE));
+            mTextPlan.setText(plan);
 
-        Elements costClass = doc.getElementsByClass(PLAN_CLASS);
-        Elements costTag = costClass.get(0).getElementsByTag("strong");
-        String cost = costTag.get(1).ownText();
-        mTextCharge.setText(cost);
+            Elements costClass = doc.getElementsByClass(PLAN_CLASS);
+            Elements costTag = costClass.get(0).getElementsByTag(COST_TAG);
+            String cost = costTag.get(1).ownText();
+            mTextCharge.setText(cost);
+        }
+        catch (IndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+            showToast(getString(R.string.parsing_error));
+            goBack();
+        }
     }
 
+    private void loadingError(VolleyError error) {
+        closeProgressDialog();
+        log(error.toString());
+    }
+
+    private void logCookies() {
+        for (java.net.HttpCookie cookie : mCookieManager.getCookieStore().getCookies()) {
+            log(cookie.toString());
+        }
+    }
+
+    private void startProgressDialog() {
+        mProgressDialog = new ProgressDialog(getContext(), ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setTitle(R.string.please_wait);
+        mProgressDialog.show();
+
+    }
+
+    private void closeProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
 
     private void openLoanActivity() {
+        UtilCookies.saveCookies(mAppContext, mCookieManager);
+        Intent intent = new Intent(getContext(), ActivityLoan.class);
+        startActivity(intent);
     }
 
     private void openChargesActivity() {
     }
 
-    private void loginFailed() {
-        showToast(getString(R.string.login_failed));
+    private void goBack() {
         mCookieManager.getCookieStore().removeAll();
         getActivity().onBackPressed();
     }

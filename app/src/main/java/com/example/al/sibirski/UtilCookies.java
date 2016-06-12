@@ -21,12 +21,12 @@ public class UtilCookies {
     }
 
     public static void saveCookies(Context context, CookieManager cookieManager) {
-        ApplicationData app = (ApplicationData) context;
+        ApplicationCookies app = (ApplicationCookies) context;
         app.setCookieManager(cookieManager);
     }
 
     public static CookieManager loadCookies(Context context) {
-        ApplicationData app = (ApplicationData) context;
+        ApplicationCookies app = (ApplicationCookies) context;
         return app.getCookieManager();
     }
 }

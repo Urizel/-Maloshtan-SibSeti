@@ -6,7 +6,6 @@
     android:onClick="callProvider"
 
     android:layout_margin="@dimen/activity_small_margin"
-    android:id="@+id/login_footer"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

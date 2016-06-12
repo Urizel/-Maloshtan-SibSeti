@@ -5,21 +5,23 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.al.sibirski.ApplicationData"
+        android:name=".ApplicationCookies"
         android:allowBackup="true"
         android:icon="@drawable/app"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".ActivityLogin"
-            android:label="@string/activity_login_title"
+            android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ActivityMain"
             android:label="@string/title_activity_main"
@@ -29,6 +31,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.al.sibirski.ActivityLogin" />
         </activity>
+
+        <activity
+            android:name=".ActivityLoan"
+            android:label="@string/title_activity_loan"
+            android:parentActivityName=".ActivityMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.al.sibirski.ActivityMain" />
+        </activity>
+
     </application>
 
 </manifest>

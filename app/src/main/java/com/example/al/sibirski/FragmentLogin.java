@@ -1,5 +1,6 @@
 package com.example.al.sibirski;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +20,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.jakewharton.rxbinding.widget.RxTextView;
@@ -41,7 +43,9 @@ public class FragmentLogin extends Fragment {
 
     private EditText mEditName;
     private EditText mEditPass;
+    private Button mButtonLogin;
 
+    private ProgressDialog mProgressDialog;
     private CookieManager mCookieManager;
     private Context mAppContext;
 
@@ -64,10 +68,10 @@ public class FragmentLogin extends Fragment {
         mEditName = (EditText) rootView.findViewById(R.id.edit_name);
         mEditName.setText(retrieveLogin());
         mEditPass = (EditText) rootView.findViewById(R.id.edit_pass);
-        Button buttonLogin = (Button) rootView.findViewById(R.id.button_login);
-        buttonLogin.setEnabled(false);
 
-        buttonLogin.setOnClickListener(v -> loginRequest());
+        mButtonLogin = (Button) rootView.findViewById(R.id.button_login);
+        mButtonLogin.setOnClickListener(v -> loginRequest());
+        mButtonLogin.setEnabled(false);
 
         Observable<TextViewTextChangeEvent> observableName = RxTextView.textChangeEvents(mEditName);
         Observable<TextViewTextChangeEvent> observablePass = RxTextView.textChangeEvents(mEditPass);
@@ -78,7 +82,7 @@ public class FragmentLogin extends Fragment {
                 (name,pass)-> lengthOk(name.text().toString()) && lengthOk(pass.text().toString()));
 
         // lambda method reference
-        enableButton.subscribe(buttonLogin::setEnabled);
+        enableButton.subscribe(mButtonLogin::setEnabled);
 
         return rootView;
     }
@@ -89,6 +93,8 @@ public class FragmentLogin extends Fragment {
 
     private void loginRequest() {
 
+        startProgressDialog();
+
         CookieHandler.setDefault(mCookieManager);
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
@@ -96,8 +102,8 @@ public class FragmentLogin extends Fragment {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 LOGIN_URL,
-                (Response.Listener<String>) response -> checkLogin(),
-                (Response.ErrorListener) error -> log("Volley in login query returned error!")
+                (Response.Listener<String>) this::requestFinished,
+                (Response.ErrorListener) this::requestError
         ) {
             @Override
             protected Map<String,String> getParams(){
@@ -118,12 +124,32 @@ public class FragmentLogin extends Fragment {
         queue.add(stringRequest);
     }
 
-    private void checkLogin() {
+    private void requestFinished(String response) {
+        closeProgressDialog();
+
         if (UtilCookies.isLoggedIn(mCookieManager)){
             loginSuccess();
         }
         else {
             loginFail();
+        }
+    }
+
+    private void requestError(VolleyError error) {
+        closeProgressDialog();
+        log(error.toString());
+    }
+
+    private void startProgressDialog() {
+        mProgressDialog = new ProgressDialog(getContext(), ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setTitle(R.string.please_wait);
+        mProgressDialog.show();
+
+    }
+
+    private void closeProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
         }
     }
 
