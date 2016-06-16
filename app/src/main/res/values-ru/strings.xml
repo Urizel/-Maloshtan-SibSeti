@@ -1,0 +1,37 @@
+<resources xmlns:xliff="http://schemas.android.com/tools">
+
+    <string name="app_name">Сибирские сети</string>
+    <string name="action_settings">Настройки</string>
+    <string name="button_login_text">Вход</string>
+    <string name="title_activity_login">Сибирские сети</string>
+    <string name="hint_name">логин</string>
+    <string name="hint_pass">пароль</string>
+    <string name="title_activity_main">Личный кабинет</string>
+    <string name="login_failed">Попытка логина </string>
+    <string name="current_balance">Текущий баланс</string>
+    <string name="wallet_image">Изображение баланс</string>
+    <string name="current_plan">Тарифный план</string>
+    <string name="charge_rate">Абонентская плата</string>
+    <string name="show_last_charges">Платежи и списания</string>
+    <string name="take_loan">Обещанный платёж</string>
+    <string name="company_logo">Логотип компании</string>
+    <string name="phone">8-800-250-0211</string>
+    <string name="login_welcome">Сибирские сети\nВход в личный кабинет</string>
+
+    <string name="balance">
+        <xliff:g id="s">%s</xliff:g> Р.
+    </string>
+
+    <string name="parsing_error">Ошибка парсинга ответа сервера</string>
+    <string name="please_wait">Идёт загрузка</string>
+    <string name="title_activity_loan">Обещанный платёж</string>
+    <string name="open_loan_failed">Ошибка получения данных обещанного
+        платежа</string>
+    <string name="expiration_date">Платёж на срок до</string>
+    <string name="get_loan">Внести обещанный платёж</string>
+    <string name="choose_sum">Выберите сумму</string>
+    <string name="empty_sum">...</string>
+    <string name="dialog_sum_title">Выберите сумму</string>
+    <string name="loan_taken">Обещанный платёж взят</string>
+
+</resources>

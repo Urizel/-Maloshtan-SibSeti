@@ -6,10 +6,6 @@
     <string name="title_activity_login">Sibirskie Seti</string>
     <string name="hint_name">username</string>
     <string name="hint_pass">password</string>
-    <!--DELETE IT-->
-    <string name="default_login">281411</string>
-    <string name="default_pass">E281411e</string>
-    <!---->
     <string name="title_activity_main">Personal Cabinet</string>
     <string name="login_failed">Login failed</string>
     <string name="current_balance">Your current balance</string>
@@ -34,5 +30,6 @@
     <string name="choose_sum">Choose the sum to loan</string>
     <string name="empty_sum">...</string>
     <string name="dialog_sum_title">Choose sum</string>
+    <string name="loan_taken">The loan is already taken</string>
 
 </resources>

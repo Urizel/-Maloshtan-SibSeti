@@ -12,72 +12,20 @@
 
 
     <ScrollView
+        android:id="@+id/scroll_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView2"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/loan_footer"
         android:layout_below="@+id/loan_header" >
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="@dimen/activity_margin" >
-
-            <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_margin" >
-
-                <TextView
-                    android:textColor="@color/colorPrimary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/choose_sum" />
-
-                <Button
-                    style="@style/button"
-                    android:text="@string/empty_sum"
-                    android:layout_margin="@dimen/activity_small_margin"
-                    android:id="@+id/button_sum" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_margin" >
-
-                <TextView
-                    android:textColor="@color/colorPrimary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/expiration_date" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/text_date" />
-
-            </LinearLayout>
-
-            <Button
-                style="@style/button"
-                android:text="@string/get_loan"
-                android:id="@+id/button_loan" />
-
-        </LinearLayout>
-
     </ScrollView>
+
+    <Button
+        style="@style/button"
+        android:text="@string/get_loan"
+        android:id="@+id/button_loan"
+        android:layout_above="@+id/loan_footer" />
 
     <include layout="@layout/footer"
         android:id="@+id/loan_footer" />
