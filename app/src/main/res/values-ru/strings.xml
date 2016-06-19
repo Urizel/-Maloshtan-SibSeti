@@ -25,13 +25,14 @@
     <string name="parsing_error">Ошибка парсинга ответа сервера</string>
     <string name="please_wait">Идёт загрузка</string>
     <string name="title_activity_loan">Обещанный платёж</string>
-    <string name="open_loan_failed">Ошибка получения данных обещанного
-        платежа</string>
+    <string name="open_loan_failed">Ошибка получения данных</string>
+    <string name="open_loan_success">Обещанный платёж подключен</string>
     <string name="expiration_date">Платёж на срок до</string>
     <string name="get_loan">Внести обещанный платёж</string>
     <string name="choose_sum">Выберите сумму</string>
     <string name="empty_sum">...</string>
     <string name="dialog_sum_title">Выберите сумму</string>
     <string name="loan_taken">Обещанный платёж взят</string>
+    <string name="title_activity_detail">Платежи и списания</string>
 
 </resources>

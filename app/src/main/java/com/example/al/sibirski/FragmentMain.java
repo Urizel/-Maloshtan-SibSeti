@@ -33,7 +33,6 @@ import java.net.URLEncoder;
 public class FragmentMain extends Fragment {
     private static final String LOG_TAG = FragmentMain.class.getSimpleName();
 
-    //    public static final String OTHER_CLASS = "user-desk-plan-current";
     public static final String MAIN_URL = "http://passport.211.ru/profile/";
     public static final String BALANCE_CLASS = "header-balance-button";
     public static final String PLAN_CLASS = "tariff-info";
@@ -168,12 +167,17 @@ public class FragmentMain extends Fragment {
     }
 
     private void openLoanActivity() {
-        UtilCookies.saveCookies(mAppContext, mCookieManager);
-        Intent intent = new Intent(getContext(), ActivityLoan.class);
-        startActivity(intent);
+        openActivity(ActivityLoan.class);
     }
 
     private void openChargesActivity() {
+        openActivity(ActivityDetail.class);
+    }
+
+    private void openActivity(Class whatActivity) {
+        UtilCookies.saveCookies(mAppContext, mCookieManager);
+        Intent intent = new Intent(getContext(), whatActivity);
+        startActivity(intent);
     }
 
     private void goBack() {

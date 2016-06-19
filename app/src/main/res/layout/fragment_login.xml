@@ -47,7 +47,7 @@
             android:layout_margin="@dimen/activity_small_margin"
             android:id="@+id/edit_pass"
             android:singleLine="true"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:hint="@string/hint_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

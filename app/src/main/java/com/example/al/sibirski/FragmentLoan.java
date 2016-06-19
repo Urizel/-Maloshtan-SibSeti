@@ -291,7 +291,8 @@ public class FragmentLoan extends Fragment {
         Elements successClass = doc.getElementsByClass(SUCCESS_CLASS);
 
         if (successClass.size() > 0) {
-            showToast(getString(R.string.open_loan_failed));
+            showToast(getString(R.string.open_loan_success));
+            log(responseEncoded);
             goBack();
         }
     }

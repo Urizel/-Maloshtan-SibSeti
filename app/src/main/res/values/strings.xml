@@ -25,11 +25,13 @@
     <string name="please_wait">Please wait</string>
     <string name="title_activity_loan">ActivityLoan</string>
     <string name="open_loan_failed">Error showing loan options</string>
+    <string name="open_loan_success">The loan is taken</string>
     <string name="expiration_date">The loan will expire on</string>
     <string name="get_loan">Get loan</string>
     <string name="choose_sum">Choose the sum to loan</string>
     <string name="empty_sum">...</string>
     <string name="dialog_sum_title">Choose sum</string>
     <string name="loan_taken">The loan is already taken</string>
+    <string name="title_activity_detail">Details</string>
 
 </resources>
