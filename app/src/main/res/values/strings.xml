@@ -33,5 +33,7 @@
     <string name="dialog_sum_title">Choose sum</string>
     <string name="loan_taken">The loan is already taken</string>
     <string name="title_activity_detail">Details</string>
+    <string name="details">Details:</string>
+    <string name="open_details_failed">Failed opening details</string>
 
 </resources>

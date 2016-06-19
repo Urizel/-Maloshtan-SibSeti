@@ -34,5 +34,7 @@
     <string name="dialog_sum_title">Выберите сумму</string>
     <string name="loan_taken">Обещанный платёж взят</string>
     <string name="title_activity_detail">Платежи и списания</string>
+    <string name="details">Детализация списаний:</string>
+    <string name="open_details_failed">Ошибка получения данных</string>
 
 </resources>

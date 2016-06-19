@@ -307,12 +307,6 @@ public class FragmentLoan extends Fragment {
         log(error.toString());
     }
 
-    private void logCookies() {
-        for (java.net.HttpCookie cookie : mCookieManager.getCookieStore().getCookies()) {
-            log(cookie.toString());
-        }
-    }
-
     private void startProgressDialog() {
         mProgressDialog = new ProgressDialog(getContext(), ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setTitle(R.string.please_wait);
@@ -323,6 +317,12 @@ public class FragmentLoan extends Fragment {
     private void closeProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+        }
+    }
+
+    private void logCookies() {
+        for (java.net.HttpCookie cookie : mCookieManager.getCookieStore().getCookies()) {
+            log(cookie.toString());
         }
     }
 

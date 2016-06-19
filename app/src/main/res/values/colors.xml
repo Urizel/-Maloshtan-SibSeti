@@ -5,4 +5,7 @@
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <color name="colorPrimaryDark">#0096c8</color>
     <color name="colorAccent">#FF7070</color>
+
+    <color name="colorPlus">#10ae37</color>
+    <color name="colorMinus">#f0040e</color>
 </resources>

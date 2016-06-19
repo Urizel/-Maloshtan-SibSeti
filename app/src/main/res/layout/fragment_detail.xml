@@ -8,9 +8,16 @@
     tools:showIn="@layout/activity_detail">
 
     <include layout="@layout/header"
-        android:id="@+id/loan_header" />
+        android:id="@+id/details_header" />
+
+    <ListView
+        android:id="@+id/listview_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/details_footer"
+        android:layout_below="@+id/details_header" />
 
     <include layout="@layout/footer"
-        android:id="@+id/loan_footer" />
+        android:id="@+id/details_footer" />
 
 </RelativeLayout>
