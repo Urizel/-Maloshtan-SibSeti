@@ -36,6 +36,6 @@
     <string name="title_activity_detail">Платежи и списания</string>
     <string name="details">Детализация списаний:</string>
     <string name="open_details_failed">Ошибка получения данных</string>
-    <string name="site_payment">Перейти на сайт оплаты</string>
+    <string name="site_payment">Пополнить баланс</string>
 
 </resources>
