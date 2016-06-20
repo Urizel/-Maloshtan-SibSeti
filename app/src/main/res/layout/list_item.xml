@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/list_item_sum"
         android:layout_toStartOf="@+id/list_item_sum"
+        android:padding="@dimen/activity_small_margin"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 

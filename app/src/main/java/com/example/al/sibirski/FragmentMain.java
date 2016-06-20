@@ -3,6 +3,7 @@ package com.example.al.sibirski;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class FragmentMain extends Fragment {
     private static final String COST_TAG = "strong";
     private static final char PLAN_LEFT_BRACE = '«';
     private static final char PLAN_RIGHT_BRACE = '»';
+    private static final String PAYMENT_URI = "http://sibset.ru/oplata/";
 
     private TextView mTextBalance;
     private TextView mTextPlan;
@@ -74,6 +76,8 @@ public class FragmentMain extends Fragment {
         buttonCharges.setOnClickListener(v -> openChargesActivity());
         Button buttonLoan = (Button) rootView.findViewById(R.id.button_open_loan);
         buttonLoan.setOnClickListener(v -> openLoanActivity());
+        Button buttonPayment = (Button) rootView.findViewById(R.id.button_payment);
+        buttonPayment.setOnClickListener(v -> goToPayment());
 
         return rootView;
     }
@@ -164,6 +168,12 @@ public class FragmentMain extends Fragment {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+    }
+
+    private void goToPayment() {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(PAYMENT_URI));
+        startActivity(i);
     }
 
     private void openLoanActivity() {

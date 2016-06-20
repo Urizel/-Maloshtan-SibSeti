@@ -32,7 +32,7 @@
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_margin" >
+                android:layout_margin="@dimen/activity_small_margin" >
 
                 <TextView
                     android:textColor="@color/colorPrimary"
@@ -68,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:id="@+id/text_charge" />
+
             </LinearLayout>
 
             <Button
@@ -79,6 +80,11 @@
                 style="@style/button"
                 android:text="@string/take_loan"
                 android:id="@+id/button_open_loan" />
+
+            <Button
+                style="@style/button"
+                android:text="@string/site_payment"
+                android:id="@+id/button_payment" />
 
         </LinearLayout>
     </ScrollView>
