@@ -120,6 +120,7 @@ public class FragmentMain extends Fragment {
             ex.printStackTrace();
         }
 
+        // XXX Possible NPE
         Document doc = Jsoup.parse(responseEncoded);
 
         try {

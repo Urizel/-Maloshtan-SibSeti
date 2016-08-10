@@ -21,6 +21,7 @@ public class UtilCookies {
     }
 
     public static void saveCookies(Context context, CookieManager cookieManager) {
+        // XXX unchecked cast, should use interface instead
         ApplicationCookies app = (ApplicationCookies) context;
         app.setCookieManager(cookieManager);
     }

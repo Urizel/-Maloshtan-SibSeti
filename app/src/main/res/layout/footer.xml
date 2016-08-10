@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--XXX Layout onClick method reference-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
 

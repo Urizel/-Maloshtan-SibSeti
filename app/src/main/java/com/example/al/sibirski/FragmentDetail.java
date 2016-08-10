@@ -82,10 +82,13 @@ public class FragmentDetail extends Fragment {
             goBack();
         }
 
+        // XXX In onResume?
+
         startProgressDialog();
 
         CookieHandler.setDefault(mCookieManager);
 
+        // XXX Queue recreation
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
         logCookies();

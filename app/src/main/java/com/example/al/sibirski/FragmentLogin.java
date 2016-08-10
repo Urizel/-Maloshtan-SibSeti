@@ -36,6 +36,7 @@ import rx.Observable;
 public class FragmentLogin extends Fragment {
     private static final String LOG_TAG = FragmentLogin.class.getSimpleName();
 
+    // XXX public, can be private
     public static final String LOGIN_URL = "http://header.211.ru/";
     public static final String NAME_PARAM = "login";
     public static final String PASS_PARAM = "password";

@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.al.sibirski.ActivityMain">
 
+    <!--XXX Strange include-->
     <include layout="@layout/content_main" />
 
 </android.support.design.widget.CoordinatorLayout>

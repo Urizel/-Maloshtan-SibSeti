@@ -219,6 +219,7 @@ public class FragmentLoan extends Fragment {
         View loanOptionsLayout = inflater.inflate(R.layout.loan_options, (ViewGroup) getActivity()
                 .findViewById(R.id.loan_options_id));
 
+        // XXX Scroll instead of list adapter
         ViewGroup rootView = (ViewGroup) getActivity().findViewById(R.id.scroll_container);
 
         rootView.addView(loanOptionsLayout);
@@ -334,6 +335,7 @@ public class FragmentLoan extends Fragment {
         Log.i(LOG_TAG, text);
     }
 
+    // XXX boilerplate method
     private void showToast(String text) {
         Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
     }

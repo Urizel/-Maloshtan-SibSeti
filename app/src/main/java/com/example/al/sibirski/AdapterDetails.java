@@ -21,6 +21,7 @@ public class AdapterDetails extends ArrayAdapter<ContainerPayment> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
+        // XXX ViewHolder
         TextView date = (TextView) convertView.findViewById(R.id.list_item_date);
         TextView text = (TextView) convertView.findViewById(R.id.list_item_text);
         TextView sum = (TextView) convertView.findViewById(R.id.list_item_sum);
@@ -29,6 +30,7 @@ public class AdapterDetails extends ArrayAdapter<ContainerPayment> {
         text.setText(containerPayment.getText());
         sum.setText(containerPayment.getSum());
 
+        // XXX resource cache
         if (containerPayment.isPlus()) {
             sum.setTextColor(getContext().getResources().getColor(R.color.colorPlus));
         }

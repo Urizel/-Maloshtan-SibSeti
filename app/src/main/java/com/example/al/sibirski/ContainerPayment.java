@@ -1,5 +1,6 @@
 package com.example.al.sibirski;
 
+// XXX mutable model
 public class ContainerPayment {
     private String date;
     private String text;
